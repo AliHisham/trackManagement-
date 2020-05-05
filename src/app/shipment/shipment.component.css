@@ -1,0 +1,36 @@
+agm-map{
+    height: 400px;
+}
+.table{
+    background-color:white;
+}
+table{
+    width:100%
+}
+
+@media (max-width:750px){
+  .actionMobile{
+      padding-left: 0.6rem;
+  }
+  .actions{
+      padding-left: 0.6rem;
+  }
+  .hide{
+      display: none;
+  }
+  
+}
+
+@media (min-width:750px){
+    .actions{
+        padding-left: 2rem;
+     }
+    
+}
+.square4{
+    background-color: #f44336;
+    color: white;
+}
+.right{
+    float: right;
+}

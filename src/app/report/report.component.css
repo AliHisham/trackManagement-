@@ -1,0 +1,8 @@
+.example-margin {
+    margin: 0 10px;
+  }
+  @media (max-width:750px){
+    .col-md-4{
+      padding-bottom: 1rem;
+    }
+  }

@@ -1,0 +1,40 @@
+
+<div class="row">
+    <div class="col-md-12" >
+        <div class="back">
+            <h3>
+                Employee Info
+            </h3>
+            <form [formGroup]="employeeForm" (ngSubmit)="save('DONE' , 'dismiss')">
+                <div class="form-group">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>name</mat-label>
+                        <input matInput formControlName="name" [ngModel]="object?.name">
+                      </mat-form-field>
+                </div>
+                <div class="form-group">
+                   <mat-form-field class="example-full-width">
+                    <mat-label>Phone</mat-label>
+                    <input matInput  formControlName="phone" [ngModel]="object?.phone">
+                  </mat-form-field>
+                </div>
+                <div class="form-group">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Email</mat-label>
+                        <input matInput formControlName="email" [ngModel]="object?.email">
+                      </mat-form-field>
+                </div>
+                <div class="form-group">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Address</mat-label>
+                        <input matInput formControlName="address" [ngModel]="object?.address">
+                      </mat-form-field>
+                </div>
+                <div class="d-flex justify-content-center">
+                   <button mat-raised-button color="primary"  type="submit" [disabled]="!employeeForm.valid">SAVE</button>
+                </div>
+          </form>
+        </div>
+       
+    </div>
+</div>

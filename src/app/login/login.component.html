@@ -1,0 +1,54 @@
+<div class="row">
+    <div class="col-md-12">
+       <div  class="d-flex justify-content-center">
+            <mat-card class="square4" *ngIf="show==true" >
+                <mat-card-content>
+                    <button mat-icon-button  (click)="close()" ><mat-icon>close</mat-icon></button>
+                    <p > {{error}}</p>
+                </mat-card-content>
+              </mat-card>
+       </div>
+        <div class="d-flex justify-content-center">
+            <mat-card class="example-card">
+                <mat-card-header>
+                 
+                  <mat-card-title>LOG IN </mat-card-title>
+                  <hr>
+                </mat-card-header>
+                <mat-card-content>
+                    <form [formGroup]="loginForm">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Email</mat-label>
+                                        <input matInput formControlName= "email" >
+                                      </mat-form-field>     
+                                </div>
+                                    <div class="form-group">
+                                        <mat-form-field >
+                                            <mat-label>Enter password</mat-label>
+                                            <input matInput [type]="hide ? 'password' : 'text'" formControlName= "password">
+                                            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                            </button>
+                                          </mat-form-field>
+                                     </div>
+                            </div>
+                        </div>
+                    </form>
+                </mat-card-content>
+                <mat-card-actions>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="d-flex justify-content-center">
+                                <button  mat-raised-button color="primary" (click)="Login()" [disabled]="!loginForm.valid">LOG IN</button>
+                            </div>
+                        </div>
+                    </div>
+                </mat-card-actions>
+              </mat-card>
+           
+        </div>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+.table{
+    background-color:white;
+}
+table{
+    width: 100%;
+}
+@media (max-width:750px){
+    .actionMobile{
+        padding-left: 1rem;
+    }
+    .actions{
+        padding-left: 2rem;
+    }
+  }
+  
+  @media (min-width:750px){
+      .actions{
+          padding-left: 1rem;
+       }
+  }
+  .square4{
+    background-color: #f44336;
+    color: white;
+}

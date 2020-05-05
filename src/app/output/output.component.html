@@ -1,0 +1,47 @@
+
+<nav class="navbar navbar-expand-md navbar-light bg-light fixed-top"  >
+  
+  <button class="navbar-toggler" type="button" (click)="collapse=!collapse" >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" [ngbCollapse]="collapse" >
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/home" routerLinkActive="active" (click)="collapse=!collapse">HOME</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/shipment" routerLinkActive="active" (click)="collapse=!collapse">SHIPMENTS</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/clients" routerLinkActive="active" (click)="collapse=!collapse">CLIENTS</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/employee"  routerLinkActive="active" (click)="collapse=!collapse">EMPLOYEES</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/report"  routerLinkActive="active" (click)="collapse=!collapse">REPORTS</a>
+      </li>
+     
+      <li class="nav-item"  >
+        <a class="nav-link" (click)="logout()" routerLink="">LOGOUT</a>
+      </li>
+     
+     
+      
+    </ul>
+    <ul class="navbar-nav ml-auto" >
+      <div class="admin">
+        
+        <app-user-button ></app-user-button>
+      
+    </div>
+    </ul>
+  
+  </div>
+</nav>
+
+
+
+ 
+

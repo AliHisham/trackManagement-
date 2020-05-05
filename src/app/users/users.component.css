@@ -1,0 +1,13 @@
+.example-card{
+    width: 900px;
+}
+.square4{
+    background-color: #f44336;
+    color: white;
+}
+.d-flex{
+    padding-bottom: 1rem;
+}
+.mat-icon-button{
+    float:right;
+}

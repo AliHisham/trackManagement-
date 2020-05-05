@@ -1,0 +1,70 @@
+<div class="row">
+    <div class="col-md-12">
+        <button mat-raised-button color="warn" (click)="logout()" routerLink="">LOG OUT</button>
+    </div>
+    <div class="col-md-12">
+        <mat-card >
+            <mat-card-header>
+              <mat-card-title>
+                TRACK YOUR SHIPMENT
+              </mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <div class="row">
+                <div class="col">
+                    <form [formGroup]="search" >
+                        <mat-form-field class="full">
+                          <mat-label>Search</mat-label>
+                          <input matInput formControlName="shipmentNumber" placeholder="Enter shipment number " >
+                        </mat-form-field>
+                        
+                      </form>
+                
+                </div>
+              </div>
+            </mat-card-content>
+            <mat-card-actions>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="d-flex justify-content-center">
+                            <button mat-raised-button color="primary" (click)="find(search)" [disabled]="!search.valid">Search</button>
+                        </div>
+                    </div>
+                </div>
+            </mat-card-actions>
+          </mat-card>
+    </div>
+
+    <div class="col-md-12" *ngIf="show==true">
+        <mat-card  >
+            <mat-card-header>
+              <mat-card-title>
+                 
+              </mat-card-title>
+            </mat-card-header>
+            <mat-card-content *ngIf="check==false" >
+              <h4>Shipment Number: {{shipment?.shipmentNumber}}</h4>
+              <h4>Shipment Status: {{shipment?.shipmentStatus}}</h4>
+              <h4>Shipment Location: <button mat-raised-button color="primary" (click)="openModal(template)"> LOCATION</button></h4>
+            </mat-card-content>
+            <mat-card-content *ngIf="check==true">
+              <h4>THERE IS NO SHIPMENT WITH THIS NUMBER</h4>
+            </mat-card-content>
+          </mat-card>
+          <ng-template #template>
+            <div class="modal-header">
+              <h4 class="modal-title pull-left">Location</h4>
+              <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <agm-map [longitude]="shipment?.lng" [latitude]="shipment?.Lat"  >
+                    <agm-marker  [longitude]="shipment?.lng" [latitude]="shipment?.Lat">        
+                    </agm-marker>
+                </agm-map>
+               
+            </div>
+          </ng-template>
+    </div>
+</div>

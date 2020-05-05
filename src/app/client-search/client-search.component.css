@@ -1,0 +1,15 @@
+.full{
+    width: 100%;
+}
+.col-md-12{
+    padding-top: 1rem;
+}
+h4{
+    padding-top: 1rem;
+}
+agm-map{
+    height: 400px;
+}
+.mat-fab.mat-warn, .mat-flat-button.mat-warn, .mat-mini-fab.mat-warn, .mat-raised-button.mat-warn{
+    float:right;
+}

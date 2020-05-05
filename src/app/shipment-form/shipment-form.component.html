@@ -1,0 +1,243 @@
+<div class="row">
+    <div class="col-md-12">  
+        <div class="header">
+            <form  (ngSubmit)="submit('DONE','dismiss')" [formGroup]="shipmentForm">
+              <div class="row">
+                <div class="col-md-6">
+                    <h3>
+                        Sender Details
+                    </h3>
+                    <hr>
+                    <div class="form-group">
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Sender Name</mat-label>
+                            <mat-select formControlName="senderName" [ngModel]="shipment?.senderName">
+                              <mat-option *ngFor ="let s of senders"  [value]="s.name" >
+                                {{s.name}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                    </div>
+                    <div class="form-group">
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Sender City</mat-label>
+                            <mat-select formControlName="senderCity" [ngModel]="shipment?.senderCity">
+                              <mat-option *ngFor="let c of city"  [value]="c.value" >
+                                {{c.value}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                    </div>
+                    <div class="form-group">
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Sender Address</mat-label>
+                            <input matInput formControlName="senderAddress" [ngModel]="shipment?.senderAddress">
+                          </mat-form-field>     
+                    </div>
+                    <div class="form-group">
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Sender Phone</mat-label>
+                            <input matInput  formControlName="senderPhone" [ngModel]="shipment?.senderPhone">
+                          </mat-form-field> 
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h3>
+                        Receiver Details
+                    </h3>
+                    <hr>
+                    <div class="form-group" >
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Receiver Name</mat-label>
+                            <mat-select formControlName="receiverName"  [ngModel]="shipment?.receiverName">
+                              <mat-option *ngFor ="let r of receivers"  [value]="r.name" >
+                                {{r.name}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                    </div>
+                    <div class="form-group">
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Receiver City</mat-label>
+                            <mat-select formControlName="receiverCity" [ngModel]="shipment?.receiverCity">
+                              <mat-option *ngFor="let c of city"  [value]="c.value" >
+                                {{c.value}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                    </div>
+                    <div class="form-group">
+                      <mat-form-field class="example-full-width">
+                        <mat-label>Receiver Address</mat-label>
+                        <input matInput formControlName="receiverAddress" [ngModel]="shipment?.receiverAddress">
+                      </mat-form-field>  
+                    </div>
+                    <div class="form-group">
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Receiver Phone</mat-label>
+                            <input matInput  formControlName="receiverPhone" [ngModel]="shipment?.receiverPhone">
+                          </mat-form-field>  
+                    </div>     
+                </div>
+              </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="d-flex justify-content-center">
+                        <h3>
+                            Shipment Details
+                        </h3>
+                    </div>
+                    <hr>
+                  </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Shipment Number</mat-label>
+                            <input matInput type="number" formControlName="shipmentNumber" [ngModel]="shipment?.shipmentNumber">
+                          </mat-form-field>  
+                    </div>
+                    <div class="form-group">
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Service Price</mat-label>
+                            <input matInput  formControlName="servicePrice" [ngModel]="shipment?.servicePrice">
+                            <span matSuffix>EGP</span>
+                          </mat-form-field>  
+                    </div>
+                    <div class="form-group">
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Payment Method</mat-label>
+                            <mat-select formControlName="paymentMethod" [ngModel]="shipment?.paymentMethod">
+                              <mat-option *ngFor="let m of method"  [value]="m.value" >
+                                {{m.value}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+
+                    </div>
+                    <div class="form-group">
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Origin Employee</mat-label>
+                            <mat-select formControlName="oEmployee" [ngModel]="shipment?.oEmployee">
+                              <mat-option *ngFor="let e of employees" [value]="e.name" >
+                                {{e.name}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                    </div>
+                    <div class="form-group">
+                            <mat-form-field class="example-full-width">
+                            <mat-label>Pickup Date</mat-label>
+                            <input matInput [matDatepicker]="picker"  formControlName="datePicker"  [ngModel]="date">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                          </mat-form-field>
+                    </div>            
+                  </div>
+                <div class="col-md-6">
+                    <div class="form-group" >
+                      <mat-form-field class="example-full-width">
+                        <mat-label>Shipment Type</mat-label>
+                        <input matInput  formControlName="shipmentType" [ngModel]="shipment?.shipmentType">
+                      </mat-form-field>  
+                    </div>
+                    <div class="form-group">
+                    <mat-form-field class="example-full-width">
+                      <mat-label>Service Weight</mat-label>
+                      <input matInput type="number"  formControlName="serviceWeight" [ngModel]="shipment?.serviceWeight">
+                      <span matSuffix>KG</span>
+                    </mat-form-field>  
+                    </div>
+                    <div class="form-group">
+                      <mat-form-field class="example-full-width">
+                        <mat-label>Consignment Value</mat-label>
+                        <input matInput type="number"  formControlName="ConsignmentValue" [ngModel]="shipment?.ConsignmentValue">
+                        <span matSuffix>EGP</span>
+                      </mat-form-field>  
+                    </div>
+                    <div class="form-group">
+                      <mat-form-field class="example-full-width">
+                        <mat-label>Destination Employee</mat-label>
+                        <mat-select formControlName="destinationEmployee" [ngModel]="shipment?.destinationEmployee">
+                          <mat-option *ngFor="let e of employees" [value]="e.name" >
+                            {{e.name}}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                    <div class="form-group">
+                      <mat-form-field class="example-full-width">
+                        <mat-label>Destination Date</mat-label>
+                        <input matInput [matDatepicker]="p"  formControlName="datePicker2" [ngModel]="date2">
+                        <mat-datepicker-toggle matSuffix [for]="p"></mat-datepicker-toggle>
+                        <mat-datepicker #p></mat-datepicker>
+                      </mat-form-field>
+                    </div>             
+                  </div>
+              </div>
+              <hr>
+            <div class="row">
+             <div class="col-md-12">
+                <div class="d-flex justify-content-center">
+                    <h3>
+                        Shipment Status
+                    </h3>
+                </div>
+                <hr>
+             </div>
+               <div class="col-md-6">
+                 <div class="form-group">
+                   <mat-form-field class="example-full-width">
+                    <mat-label>Shipment Location</mat-label>
+                    <input matInput   formControlName="ShipmentLocation" [ngModel]="shipment?.ShipmentLocation">
+                  </mat-form-field>  
+                   
+                 </div> 
+               </div>
+               <div class="col-md-6">
+                   <div class="form-group">
+                     
+                     <mat-form-field class="example-full-width">
+                      <mat-label>Shipment Status</mat-label>
+                      <mat-select formControlName="shipmentStatus" [ngModel]="shipment?.shipmentStatus">
+                        <mat-option *ngFor="let s of status"  [value]="s.value" >
+                          {{s.value}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                   
+                   </div>
+               </div>
+               <div class="col-md-12">
+                <agm-map [longitude]="lng" [latitude]="lat" (mapClick)="currentLocation($event)" >
+                    <agm-marker  [longitude]="lng" [latitude]="lat">        
+                    </agm-marker>
+                </agm-map>
+               </div>
+               <div class="col-md-6">
+                <div class="form-group"  [hidden]="hide" >
+                    <label for="location" >lng</label>
+                    <input type="text" formControlName="lng"  [(ngModel)]="lng"class="form-control">
+                 </div> 
+               </div>
+               <div class="col-md-6">
+                <div class="form-group" [hidden]="hide" >
+                    <label for="location">Lat</label>
+                    <input type="text" formControlName="Lat" [(ngModel)]="lat" class="form-control">
+                 </div> 
+               </div>
+            </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="d-flex justify-content-center">
+                      
+                      <button mat-raised-button color="primary"  type="submit" [disabled]="!shipmentForm.valid">SAVE</button>
+                </div>
+            </div>
+        </div>        
+    </form>
+   </div>
+ </div>   
+</div>
+
+

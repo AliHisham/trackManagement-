@@ -1,0 +1,71 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="header">
+            <form [formGroup]="clientForm" (ngSubmit)="save('DONE','dismiss')">
+               <div class="row">
+                   <div class="col-md-12">
+                       <div class="form-group">
+                           <mat-form-field class="example-full-width">
+                            <mat-label>name</mat-label>
+                            <input matInput formControlName="name" [ngModel]="client?.name">
+                          </mat-form-field>
+                       </div>
+                       <div class="form-group">
+                           <mat-form-field class="example-full-width">
+                            <mat-label>Client Type</mat-label>
+                            <mat-select formControlName="type" [ngModel]="client?.type">
+                              <mat-option *ngFor="let t of type"  [value]="t.value" >
+                                {{t.value}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                        </div>
+                        <div class="form-group">
+                            <mat-form-field class="example-full-width">
+                                <mat-label>Client Phone</mat-label>
+                                <input matInput formControlName="phone" [ngModel]="client?.phone">
+                              </mat-form-field>                           
+                         </div>
+                         <div class="form-group">
+                             <mat-form-field class="example-full-width">
+                                <mat-label>Client Email</mat-label>
+                                <input matInput formControlName="email" [ngModel]="client?.email">
+                              </mat-form-field>
+                         </div>
+                         <div class="form-group">
+                             <mat-form-field class="example-full-width">
+                                <mat-label>Client City</mat-label>
+                                <mat-select formControlName="city" [ngModel]="client?.city">
+                                  <mat-option *ngFor="let c of city"  [value]="c.value" >
+                                    {{c.value}}
+                                  </mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            </div>
+                            <hr>
+                            <h3>
+                                Client Location
+                            </h3>
+                            <agm-map [longitude]="lng" [latitude]="lat" (mapClick)="currentLocation($event)" >
+                                <agm-marker  [longitude]="lng" [latitude]="lat">        
+                                </agm-marker>
+                            </agm-map>
+                            <div class="form-group"[hidden]="hide">
+                                <label for="lng">lng</label>
+                                <input type="text" formControlName="lng" [ngModel]="lng" class="form-control">
+                             </div>
+                             <div class="form-group"[hidden]="hide">
+                                <label for="lat">lat</label>
+                                <input type="text" formControlName="lat" [ngModel]="lat" class="form-control">
+                             </div>
+                             <hr>
+                             <div class="d-flex justify-content-center">
+                                
+                                <button mat-raised-button color="primary" type="submit" [disabled]="!clientForm.valid">SAVE</button>
+                            </div>
+                   </div>
+               </div>
+            </form>
+        </div>
+    </div>
+</div>

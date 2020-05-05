@@ -1,0 +1,24 @@
+<div class="row" >
+    <div class="col-md-12" *ngIf="check==true">
+      <app-data-rect></app-data-rect>
+        <hr>
+        <div class="row">
+          <div class="col-md-6" *ngIf="check==true">
+            <app-data-chart></app-data-chart>
+           </div>
+           <div class="col-md-6" *ngIf="check==true">
+             <mat-card  >
+              <mat-card-content>
+                <h5>Total  shipments <span class="badge ">{{shipmentsNumber}}</span></h5>
+                <h5>Total  delivered shipments <span class="badge">{{deliveredShipments.length}}</span></h5>
+                <h5>Total  on-hold shipments <span class="badge ">{{onholdShipments.length}}</span></h5>
+                <h5>Total returned shipments <span class="badge ">{{returnedShipments.length}}</span></h5>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+    </div>
+    <div class="col-md-12" *ngIf="check==false">
+      <app-client-search></app-client-search>
+    </div>
+</div>

@@ -1,0 +1,77 @@
+<div class="row">
+  <div class="col-md-12" *ngIf="show==true">
+    <div class="d-flex justify-content-center">
+            
+      <mat-card class="square4"  >
+      
+          <mat-card-content>
+              
+              <p > {{message}}</p>
+          </mat-card-content>
+        </mat-card>
+  </div>
+  </div>
+    <div class="col-md-12">
+      
+      <button mat-raised-button color="primary" routerLink="/shipmentform">NEW SHIPMENT</button>
+      
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-md-12">
+        <h2>SHIPMENTS</h2>
+        <hr>
+        <div class="mat-elevation-z8">
+            <table mat-table [dataSource]="dataSource" >
+                <ng-container matColumnDef="shipmentNumber">
+                  <th mat-header-cell *matHeaderCellDef>  shipment number </th>
+                  <td mat-cell *matCellDef="let element"> {{element.shipmentNumber}} </td>
+                </ng-container>
+                <ng-container matColumnDef="oEmployee" >
+                  <th mat-header-cell *matHeaderCellDef class="actionMobile"> origin employee </th>
+                  <td mat-cell *matCellDef="let element" class="actionMobile"> {{element.oEmployee}} </td>
+                </ng-container>
+                <ng-container matColumnDef="destinationEmployee" >
+                  <th mat-header-cell *matHeaderCellDef class="actionMobile"> destination employee </th>
+                  <td mat-cell *matCellDef="let element" class="actionMobile"> {{element.destinationEmployee}} </td>
+                </ng-container>
+                <ng-container matColumnDef=" shipmentStatus" >
+                  <th mat-header-cell *matHeaderCellDef class="hide">  shipment status </th>
+                  <td mat-cell *matCellDef="let element" class="hide"> {{element.shipmentStatus}} </td>
+                </ng-container>
+                <ng-container matColumnDef="Actions">
+                    <th mat-header-cell *matHeaderCellDef class="actions">  actions </th>
+                    <td mat-cell *matCellDef="let element" class="actionMobile"> <button mat-icon-button color="primary" (click)="openModal(template, element._id)" ><mat-icon>place</mat-icon></button> <button  mat-icon-button  [routerLink]="['/shipmentform' ,element._id]"><mat-icon>create</mat-icon></button>  <button mat-icon-button color="warn" (click)="delete(element._id)"><mat-icon>delete</mat-icon></button> </td>
+                  </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              </table>
+              <mat-paginator  [length]="AllShipments.length"
+              [pageSize]="shipmentsPerPage"
+              (page)="onchange($event)">
+              </mat-paginator>
+        </div>      
+        <ng-template #template>
+            <div class="modal-header">
+              <h4 class="modal-title pull-left">Location</h4>
+              <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <agm-map [longitude]="lng" [latitude]="lat"  >
+                    <agm-marker  [longitude]="lng" [latitude]="lat">        
+                    </agm-marker>
+                </agm-map>
+                <mat-card class="square4" *ngIf="show==true"  >
+      
+                  <mat-card-content>
+                      
+                      <p > {{message}}</p>
+                  </mat-card-content>
+                </mat-card>
+            </div>
+          </ng-template>
+    </div>
+</div>
